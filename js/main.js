@@ -106,3 +106,30 @@ function floatingObject(selector, delay, size) {
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
+
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function(spyEl){
+  new ScrollMagic
+    .Scene({
+      triggerElement: spyEl, // 보여짐 여부 감시 요소
+      triggerHook: .8 // 화면상 위에서 80%지점에 오면 트리거 실행
+  })
+    .setClassToggle(spyEl, 'show')
+    .addTo( new ScrollMagic.Controller());
+
+});
+
+new Swiper('.awards .swiper-container', {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  slidesPerGroup: 5,
+  navigation: {
+    prevEl: '.awards .swiper-prev', 
+    nextEl: '.awards .swiper-next'
+  }
+});
+
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
